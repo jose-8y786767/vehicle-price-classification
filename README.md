@@ -233,37 +233,37 @@ vehicle-price-classification/
 ## 👥 Team
 ### Group 1 - ALY 6040 Data Mining Applications
 
-Muskan Bhatt
-Aliena Iqbal Hussain Abidi
-**Abhijit More**
-Parth Kothari
-Shubh Dave
+Muskan Bhatt  
+Aliena Iqbal Hussain Abidi  
+**Abhijit More**  
+Parth Kothari  
+Shubh Dave  
 
-**Institution:** Northeastern University, College of Professional Studies
-**Course:** ALY 6040 - Data Mining Applications
-**Instructor:** Prof. Kasun S.
-**Date:** June 25, 2025
+**Institution:** Northeastern University, College of Professional Studies  
+**Course:** ALY 6040 - Data Mining Applications  
+**Instructor:** Prof. Kasun S.  
+**Date:** June 25, 2025  
 
 ### 📄 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ### 🙏 Acknowledgments
-Dataset provided by Austin Reese via Kaggle
-Northeastern University for academic support
-Prof. Kasun S. for guidance throughout the project
-Craigslist for providing the platform that generated this valuable dataset
+Dataset provided by Austin Reese via Kaggle  
+Northeastern University for academic support  
+Prof. Kasun S. for guidance throughout the project  
+Craigslist for providing the platform that generated this valuable dataset  
 
 ### 📧 Contact
-Abhijit More
-Master's in Analytics, Northeastern University
-
-[LinkedIn](https://www.linkedin.com/in/abhijitmore1407/)
+Abhijit More  
+Master's in Analytics, Northeastern University  
+[LinkedIn](https://www.linkedin.com/in/abhijitmore1407/)  
 
 
 <div align="center">
-⭐ Star this repo if you find it helpful!
-Transforming vehicle pricing through data science and machine learning
+⭐ Star this repo if you find it helpful!  
+Transforming vehicle pricing through data science and machine learning  
 </div>
+
 
 
 
