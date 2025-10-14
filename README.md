@@ -30,6 +30,7 @@
 
 ### Price Distribution
 ![Price Distribution](results/eda/price_distribution.png)
+
 *The dataset exhibits a right-skewed distribution with 70% of vehicles priced under $20,000, and a mean price of $18,400*
 
 ### Key Relationships
@@ -201,6 +202,7 @@ vehicle-price-classification/
 ├── top_states.png
 └── year_distribution.png
 ```
+---
 
 ##💡 Future Improvements
 
@@ -261,6 +263,6 @@ Master's in Analytics, Northeastern University
 ⭐ Star this repo if you find it helpful!
 Transforming vehicle pricing through data science and machine learning
 </div>
-```
+
 
 
