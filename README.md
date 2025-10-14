@@ -168,64 +168,126 @@ Vehicle year shows strong positive correlation (r=0.577) with price, while odome
 ## 📁 Project Structure
 
 vehicle-price-classification/
-├── README.md                           # Project documentation
-├── vehicle_price_classification.ipynb  # Main analysis notebook
-├── eda_analysis.ipynb                  # Exploratory data analysis notebook
+│
+├── README.md                              # Project documentation
+├── LICENSE                                # MIT License
+├── requirements.txt                       # Python dependencies
+│
+├── vehicle_price_classification.ipynb     # Main model training notebook
+├── eda_analysis.ipynb                     # Exploratory data analysis notebook
+│
 ├── data/
-│   └── Vehicles.csv                    # Processed dataset
+│   └── Vehicles.csv                       # Processed dataset (304K records)
+│
 ├── report/
-│   └── Final_Report.pdf                # Detailed project report
-├── results/
-│   ├── performance/
-│   │   ├── main_dashboard.png
-│   │   └── confusion_matrices_comparison.png
-│   ├── eda/
-│   │   ├── price_distribution.png
-│   │   ├── price_vs_year.png
-│   │   ├── price_vs_mileage.png
-│   │   ├── price_by_condition.png
-│   │   ├── correlation_heatmap.png
-│   │   ├── top_manufacturers.png
-│   │   ├── condition_distribution.png
-│   │   ├── fuel_type_distribution.png
-│   │   ├── top_states.png
-│   │   └── year_distribution.png
-│   └── classification_results_summary.csv
-└── requirements.txt                    # Python dependencies
+│   └── Final_Report.pdf                   # Comprehensive technical report
+│
+└── results/
+├── classification_results_summary.csv # Model performance metrics
+│
+├── performance/                       # Model evaluation visualizations
+│   ├── main_dashboard.png
+│   └── confusion_matrices_comparison.png
+│
+└── eda/                               # Exploratory data analysis plots
+├── price_distribution.png
+├── price_vs_year.png
+├── price_vs_mileage.png
+├── price_by_condition.png
+├── correlation_heatmap.png
+├── top_manufacturers.png
+├── condition_distribution.png
+├── fuel_type_distribution.png
+├── top_states.png
+└── year_distribution.png
+---
 
 ---
 
 ## ⚙️ Installation & Usage
 
 ### Prerequisites
-```bash
+'''bash
 Python 3.8 or higher
 
-Setup
+## Setup
+### 1. Clone the repository
 
-Clone the repository
-
-bashgit clone https://github.com/Abhijit1407/vehicle-price-classification.git
+bash
+git clone https://github.com/Abhijit1407/vehicle-price-classification.git
 cd vehicle-price-classification
 
-Install dependencies
+### 2. Install dependencies
 
-bashpip install -r requirements.txt
+bash
+pip install -r requirements.txt
 
-Download the dataset
+3. Download the dataset
 
+Original Source: Kaggle Dataset
+Processed Data: Place Vehicles.csv in the data/ folder
+Note: Due to file size (>100MB), the dataset is not included in this repository
 
-Original: Kaggle Dataset
-Place processed data in data/ folder
+4. Run the notebooks
+Option A: Jupyter Notebook (Local)
+bash# Launch Jupyter
+jupyter notebook
 
+# Open either:
+# - eda_analysis.ipynb (for exploratory data analysis)
+# - vehicle_price_classification.ipynb (for model training)
+Option B: Google Colab (Cloud)
 
-Run the notebooks
+Upload the notebooks to Google Drive
+Open with Google Colab
+Upload the dataset to Colab or mount Google Drive
+Run all cells
 
-bash# For exploratory data analysis
-jupyter notebook eda_analysis.ipynb
+Running the Analysis
+Step 1: Exploratory Data Analysis
+bashjupyter notebook eda_analysis.ipynb
 
-# For model training and evaluation
-jupyter notebook vehicle_price_classification.ipynb
+Generates all visualizations in results/eda/
+Analyzes price distributions, correlations, and market trends
+Runtime: ~5-10 minutes
+
+Step 2: Model Training & Evaluation
+bashjupyter notebook vehicle_price_classification.ipynb
+
+Trains 5 classification models
+Generates performance metrics and confusion matrices
+Saves results to results/performance/
+Runtime: ~15-20 minutes
+
+Expected Output
+After running both notebooks, you'll have:
+
+✅ 10 EDA visualizations in results/eda/
+✅ Model performance dashboard in results/performance/
+✅ Classification results CSV with metrics
+✅ Trained model objects (optional save)
+
+Troubleshooting
+Issue: ModuleNotFoundError
+bash# Solution: Install missing packages
+pip install package-name
+Issue: Dataset not found
+bash# Solution: Verify file path
+# Ensure Vehicles.csv is in: data/Vehicles.csv
+Issue: Memory Error
+bash# Solution: Reduce dataset size or use sampling
+df = pd.read_csv('data/Vehicles.csv', nrows=100000)
+Quick Start Example
+python# Load the data
+import pandas as pd
+df = pd.read_csv('data/Vehicles.csv')
+
+# Basic exploration
+print(f"Dataset shape: {df.shape}")
+print(f"Columns: {df.columns.tolist()}")
+
+# Run the full pipeline
+%run vehicle_price_classification.ipynb
 
 💡 Future Improvements
 
@@ -306,3 +368,4 @@ Original Dataset: Kaggle - Craigslist Cars & Trucks
 Transforming vehicle pricing through data science and machine learning
 </div>
 ```
+
