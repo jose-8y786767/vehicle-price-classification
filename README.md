@@ -204,50 +204,50 @@ vehicle-price-classification/
 ```
 ---
 
-##💡 Future Improvements
+## 💡 Future Improvements
 
-** 1. Address Class Imbalance **
+**1. Address Class Imbalance**
 - Implement SMOTE for Luxury category
 - Cost-sensitive learning approaches
 - Hierarchical classification for high-end vehicles
 
-** 2. Enhanced Features **
+**2. Enhanced Features**
 - Geographic market conditions and regional pricing
 - Seasonal demand patterns and market cycles
 - Economic indicators integration (unemployment, GDP)
 - Sentiment analysis from vehicle descriptions
 
-** 3. Production Deployment **
+**3. Production Deployment**
 - REST API development for real-time inference
 - Model monitoring and drift detection
 - A/B testing framework for continuous improvement
 - Integration with dealership management systems
 
-** 4. Advanced Modeling **
+**4. Advanced Modeling**
 - Deep learning approaches (neural networks)
 - Ensemble methods combining multiple algorithms
 - Time-series forecasting for price trends
 - Natural language processing on vehicle descriptions
 
 
-##👥 Team
+## 👥 Team
 ### Group 1 - ALY 6040 Data Mining Applications
 
 Muskan Bhatt
 Aliena Iqbal Hussain Abidi
-** Abhijit More **
+**Abhijit More**
 Parth Kothari
 Shubh Dave
 
-Institution: Northeastern University, College of Professional Studies
-Course: ALY 6040 - Data Mining Applications
-Instructor: Prof. Kasun S.
-Date: June 2025
+**Institution:** Northeastern University, College of Professional Studies
+**Course:** ALY 6040 - Data Mining Applications
+**Instructor:** Prof. Kasun S.
+**Date:** June 25, 2025
 
-###📄 License
+### 📄 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-###🙏 Acknowledgments
+### 🙏 Acknowledgments
 Dataset provided by Austin Reese via Kaggle
 Northeastern University for academic support
 Prof. Kasun S. for guidance throughout the project
