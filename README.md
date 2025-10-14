@@ -256,6 +256,7 @@ Craigslist for providing the platform that generated this valuable dataset
 ### 📧 Contact
 Abhijit More
 Master's in Analytics, Northeastern University
+
 [LinkedIn](https://www.linkedin.com/in/abhijitmore1407/)
 
 
@@ -263,6 +264,7 @@ Master's in Analytics, Northeastern University
 ⭐ Star this repo if you find it helpful!
 Transforming vehicle pricing through data science and machine learning
 </div>
+
 
 
 
