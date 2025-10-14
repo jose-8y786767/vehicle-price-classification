@@ -166,7 +166,7 @@ Vehicle year shows strong positive correlation (r=0.577) with price, while odome
 ---
 
 ## 📁 Project Structure
-
+```plaintext
 vehicle-price-classification/
 │
 ├── README.md                              # Project documentation
@@ -200,136 +200,40 @@ vehicle-price-classification/
 ├── fuel_type_distribution.png
 ├── top_states.png
 └── year_distribution.png
----
+```
 
----
+##💡 Future Improvements
 
-## ⚙️ Installation & Usage
+** 1. Address Class Imbalance **
+- Implement SMOTE for Luxury category
+- Cost-sensitive learning approaches
+- Hierarchical classification for high-end vehicles
 
-### Prerequisites
-'''bash
-Python 3.8 or higher
+** 2. Enhanced Features **
+- Geographic market conditions and regional pricing
+- Seasonal demand patterns and market cycles
+- Economic indicators integration (unemployment, GDP)
+- Sentiment analysis from vehicle descriptions
 
-## Setup
-### 1. Clone the repository
+** 3. Production Deployment **
+- REST API development for real-time inference
+- Model monitoring and drift detection
+- A/B testing framework for continuous improvement
+- Integration with dealership management systems
 
-bash
-git clone https://github.com/Abhijit1407/vehicle-price-classification.git
-cd vehicle-price-classification
-
-### 2. Install dependencies
-
-bash
-pip install -r requirements.txt
-
-3. Download the dataset
-
-Original Source: Kaggle Dataset
-Processed Data: Place Vehicles.csv in the data/ folder
-Note: Due to file size (>100MB), the dataset is not included in this repository
-
-4. Run the notebooks
-Option A: Jupyter Notebook (Local)
-bash# Launch Jupyter
-jupyter notebook
-
-# Open either:
-# - eda_analysis.ipynb (for exploratory data analysis)
-# - vehicle_price_classification.ipynb (for model training)
-Option B: Google Colab (Cloud)
-
-Upload the notebooks to Google Drive
-Open with Google Colab
-Upload the dataset to Colab or mount Google Drive
-Run all cells
-
-Running the Analysis
-Step 1: Exploratory Data Analysis
-bashjupyter notebook eda_analysis.ipynb
-
-Generates all visualizations in results/eda/
-Analyzes price distributions, correlations, and market trends
-Runtime: ~5-10 minutes
-
-Step 2: Model Training & Evaluation
-bashjupyter notebook vehicle_price_classification.ipynb
-
-Trains 5 classification models
-Generates performance metrics and confusion matrices
-Saves results to results/performance/
-Runtime: ~15-20 minutes
-
-Expected Output
-After running both notebooks, you'll have:
-
-✅ 10 EDA visualizations in results/eda/
-✅ Model performance dashboard in results/performance/
-✅ Classification results CSV with metrics
-✅ Trained model objects (optional save)
-
-Troubleshooting
-Issue: ModuleNotFoundError
-bash# Solution: Install missing packages
-pip install package-name
-Issue: Dataset not found
-bash# Solution: Verify file path
-# Ensure Vehicles.csv is in: data/Vehicles.csv
-Issue: Memory Error
-bash# Solution: Reduce dataset size or use sampling
-df = pd.read_csv('data/Vehicles.csv', nrows=100000)
-Quick Start Example
-python# Load the data
-import pandas as pd
-df = pd.read_csv('data/Vehicles.csv')
-
-# Basic exploration
-print(f"Dataset shape: {df.shape}")
-print(f"Columns: {df.columns.tolist()}")
-
-# Run the full pipeline
-%run vehicle_price_classification.ipynb
-
-💡 Future Improvements
-
-Address Class Imbalance
-
-Implement SMOTE for Luxury category
-Cost-sensitive learning approaches
-Hierarchical classification for high-end vehicles
+** 4. Advanced Modeling **
+- Deep learning approaches (neural networks)
+- Ensemble methods combining multiple algorithms
+- Time-series forecasting for price trends
+- Natural language processing on vehicle descriptions
 
 
-Enhanced Features
-
-Geographic market conditions and regional pricing
-Seasonal demand patterns and market cycles
-Economic indicators integration (unemployment, GDP)
-Sentiment analysis from vehicle descriptions
-
-
-Production Deployment
-
-REST API development for real-time inference
-Model monitoring and drift detection
-A/B testing framework for continuous improvement
-Integration with dealership management systems
-
-
-Advanced Modeling
-
-Deep learning approaches (neural networks)
-Ensemble methods combining multiple algorithms
-Time-series forecasting for price trends
-Natural language processing on vehicle descriptions
-
-
-
-
-👥 Team
-Group 1 - ALY 6040 Data Mining Applications
+##👥 Team
+### Group 1 - ALY 6040 Data Mining Applications
 
 Muskan Bhatt
 Aliena Iqbal Hussain Abidi
-Abhijit More
+** Abhijit More **
 Parth Kothari
 Shubh Dave
 
@@ -338,29 +242,19 @@ Course: ALY 6040 - Data Mining Applications
 Instructor: Prof. Kasun S.
 Date: June 2025
 
-📄 License
+###📄 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-🙏 Acknowledgments
-
+###🙏 Acknowledgments
 Dataset provided by Austin Reese via Kaggle
 Northeastern University for academic support
 Prof. Kasun S. for guidance throughout the project
 Craigslist for providing the platform that generated this valuable dataset
 
-
-📧 Contact
+### 📧 Contact
 Abhijit More
 Master's in Analytics, Northeastern University
-Show Image
-Show Image
-
-📚 Additional Resources
-
-Full Report: Detailed Analysis & Methodology
-EDA Notebook: Exploratory Data Analysis
-Model Notebook: Classification & Evaluation
-Original Dataset: Kaggle - Craigslist Cars & Trucks
+[LinkedIn](https://www.linkedin.com/in/abhijitmore1407/)
 
 
 <div align="center">
@@ -368,4 +262,5 @@ Original Dataset: Kaggle - Craigslist Cars & Trucks
 Transforming vehicle pricing through data science and machine learning
 </div>
 ```
+
 
