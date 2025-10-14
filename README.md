@@ -1,214 +1,308 @@
-Vehicle Price Classification using Machine Learning
+# Vehicle Price Classification using Machine Learning
+*Automated pricing categorization for 426K+ Craigslist vehicle listings*
 
-Automated pricing categorization for 426K+ Craigslist vehicle listings
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
+[![XGBoost](https://img.shields.io/badge/XGBoost-74.2%25%20Accuracy-success.svg)](https://xgboost.ai/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-Show Image
+## 🎯 Project Impact
 
-Show Image
+**XGBoost model achieves 74.2% accuracy and 0.913 AUC** in categorizing used vehicles into Budget, Mid-Range, Premium, and Luxury segments—reducing manual appraisal time by **85%**.
 
-Show Image
+### Key Results
+- 📊 **Accuracy:** 74.2% test accuracy with 0.913 AUC score
+- ⚡ **Performance:** Outperforms Random Forest by 5.6% and SVM by 14.4%
+- 🎯 **Business Value:** Enables automated pricing for 304K+ vehicle listings
+- 🔍 **Interpretability:** Mileage and age account for 26% of predictive power
 
-🎯 Project Impact
+---
 
-XGBoost model achieves 74.2% accuracy and 0.913 AUC in categorizing used vehicles into Budget, Mid-Range, Premium, and Luxury segments—reducing manual appraisal time by 85%.
+## 📊 Dataset Overview
 
-Key Results
+- **Source:** [Craigslist Cars & Trucks Dataset](https://www.kaggle.com/datasets/austinreese/craigslist-carstrucks-data)
+- **Size:** 426,880 listings → 304,798 after preprocessing
+- **Features:** 26 base features → 53 engineered features
+- **Target Classes:** Budget (20.5%) | Mid-Range (29.8%) | Premium (43.1%) | Luxury (6.6%)
 
+---
 
+## 🔍 Exploratory Insights
 
-📊 Accuracy: 74.2% test accuracy with 0.913 AUC score
+### Price Distribution
+![Price Distribution](results/eda/price_distribution.png)
+*The dataset exhibits a right-skewed distribution with 70% of vehicles priced under $20,000, and a mean price of $18,400*
 
-⚡ Performance: Outperforms Random Forest by 5.6% and SVM by 14.4%
-
-🎯 Business Value: Enables automated pricing for 304K+ vehicle listings
-
-🔍 Interpretability: Mileage and age account for 26% of predictive power
-
-
-
-
-
-📊 Dataset Overview
-
-
-
-Source: Craigslist Cars \& Trucks Dataset
-
-Size: 426,880 listings → 304,798 after preprocessing
-
-Features: 26 base features → 53 engineered features
-
-Target Classes: Budget (20.5%) | Mid-Range (29.8%) | Premium (43.1%) | Luxury (6.6%)
-
-
-
-
-
-🔍 Exploratory Insights
+### Key Relationships
 
 <div align="center">
-
-&nbsp; <img src="results/eda/price\_distribution.png" width="48%" />
-
-&nbsp; <img src="results/eda/price\_vs\_year.png" width="48%" />
-
+  <img src="results/eda/price_vs_year.png" width="49%" />
+  <img src="results/eda/price_vs_mileage.png" width="49%" />
 </div>
 
-Key Findings:
+*Left: Strong positive correlation (r=0.577) between vehicle year and price. Right: Strong negative correlation (r=-0.532) between odometer reading and price*
 
-
-
-Price Distribution: 70% of vehicles priced under $20K; mean price $18,400
-
-Year Correlation: Strong positive (r=0.577) - newer vehicles command premium
-
-Mileage Impact: Strong negative (r=-0.532) - high mileage significantly reduces value
-
-Market Bias: 88% rated "good/excellent" indicating seller optimism
-
-
+### Market Insights
 
 <div align="center">
-
-&nbsp; <img src="results/eda/top\_manufacturers.png" width="32%" />
-
-&nbsp; <img src="results/eda/condition\_distribution.png" width="32%" />
-
-&nbsp; <img src="results/eda/fuel\_type\_distribution.png" width="32%" />
-
+  <img src="results/eda/price_by_condition.png" width="49%" />
+  <img src="results/eda/correlation_heatmap.png" width="49%" />
 </div>
 
+*Left: Price distribution across vehicle conditions showing seller optimism bias. Right: Feature correlation matrix revealing key pricing drivers*
 
+### Vehicle Characteristics
 
-🚀 Methodology
+<div align="center">
+  <img src="results/eda/top_manufacturers.png" width="32%" />
+  <img src="results/eda/condition_distribution.png" width="32%" />
+  <img src="results/eda/fuel_type_distribution.png" width="32%" />
+</div>
 
-Feature Engineering (53 Features)
+*Distribution analysis: Ford, Chevrolet, and Toyota dominate listings (left); 88% rated as "good" or "excellent" condition (center); Gas vehicles represent 95% of market (right)*
 
+### Geographic and Temporal Patterns
 
+<div align="center">
+  <img src="results/eda/top_states.png" width="49%" />
+  <img src="results/eda/year_distribution.png" width="49%" />
+</div>
 
-Temporal: vehicle\_age, age\_squared, decade groups, vintage indicators
+*Left: California leads with 50K+ listings, followed by Florida and Texas. Right: Vehicles from 2010-2020 represent 68% of all listings*
 
-Usage: mileage categories, annual usage rates, age-mileage interactions
+### Three Key EDA Insights
 
-Brand Tier: luxury/reliable/domestic classifications
+**Insight 1: Condition Bias and Market Dynamics**  
+Over 88% of listed vehicles are categorized as "good" or "excellent" condition, suggesting systematic seller optimism or strategic marketing positioning. This finding indicates potential information asymmetry between sellers and buyers, highlighting the need for objective condition assessment through feature engineering.
 
-Condition: numeric encoding with missing value indicators
+**Insight 2: Manufacturer Brand Segmentation**  
+Ford, Chevrolet, and Toyota represent the most frequently listed brands, accounting for 35% of all listings. However, luxury brands like BMW, Mercedes-Benz, and Audi command significant price premiums despite lower listing volumes. This insight supports the creation of brand-tier classification features to capture market positioning effects.
 
+**Insight 3: Strong Correlation Patterns**  
+Vehicle year shows strong positive correlation (r=0.577) with price, while odometer readings exhibit strong negative correlation (r=-0.532). These patterns, along with mileage-per-year ratios (r=0.67 with odometer), informed the creation of sophisticated temporal and usage-based features.
 
+---
 
-Model Comparison
+## 🔧 Methodology
 
-ModelAccuracyAUCF1-ScoreTraining TimeXGBoost74.2%0.9130.73345.2sRandom Forest68.6%0.8680.67987.1sDecision Tree66.9%0.8310.66712.3sLogistic Regression63.0%0.8410.6208.7sSVM59.8%0.7590.586156.4s
+### 1. Data Preprocessing
+- Handled missing values using strategic imputation (median for numeric, mode for categorical)
+- Removed outliers and unrealistic prices
+- Addressed 40%+ missing values in condition, cylinders, and VIN fields
 
+### 2. Feature Engineering (53 features created)
+**Temporal Features (10):**
+- `vehicle_age`, `age_squared`, `is_new`, `is_old`, `is_vintage`
+- Decade grouping and era-based indicators
 
+**Odometer Features (10):**
+- Log and square root transformations
+- Mileage categories, usage rates, age-interaction terms
+- `low_mileage`, `high_mileage`, `very_high_mileage` indicators
 
-📈 Performance Analysis
+**Manufacturer Features (6):**
+- Brand classifications: `is_luxury`, `is_reliable`, `is_american`
+- Geographic origin indicators (European, Japanese)
+- Hierarchical brand tier encoding
 
-Comprehensive Model Dashboard
+**Additional Features:**
+- Condition encoding, fuel type indicators, transmission type
+- Body style categories, title status encoding
 
-Show Image
+### 3. Models Evaluated
+| Model | Test Accuracy | AUC Score | F1-Score |
+|-------|--------------|-----------|----------|
+| **XGBoost** | **74.2%** | **0.913** | **0.733** |
+| Random Forest | 68.6% | 0.868 | 0.679 |
+| Decision Tree | 66.9% | 0.831 | 0.667 |
+| Logistic Regression | 63.0% | 0.841 | 0.620 |
+| SVM | 59.8% | 0.759 | 0.586 |
 
-Confusion Matrix Comparison
+---
 
-Show Image
+## 📈 Model Performance & Results
 
-XGBoost Excellence:
+### Comprehensive Analysis Dashboard
+![Main Dashboard](results/performance/main_dashboard.png)
+*Complete performance analysis including ROC curves, confusion matrices, feature importance, overfitting analysis, and model rankings across all evaluated algorithms*
 
+### Confusion Matrices Comparison
+![Confusion Matrices](results/performance/confusion_matrices_comparison.png)
+*Side-by-side comparison of classification performance across all five models, demonstrating XGBoost's superior discrimination capability*
 
+---
 
-Budget: 78% F1-Score (balanced precision-recall)
+## 🏆 Key Findings
 
-Premium: 80% F1-Score (strongest performance)
+### Top Predictive Features
+1. **High Mileage** (0.14 importance) - Critical threshold indicator
+2. **Vehicle Age** (0.12 importance) - Primary depreciation driver
+3. **Age Category** (0.10 importance) - Ordinal age encoding
+4. **Very High Mileage** (0.08 importance) - Extreme usage indicator
+5. **Vintage Status** (0.06 importance) - Collectible potential
 
-Luxury: 81% precision (high confidence), 27% recall (class imbalance challenge)
+### Model Performance Insights
+- **Strong Performance:** Budget (78% F1) and Premium (80% F1) categories
+- **Challenge:** Luxury category shows 81% precision but only 27% recall due to class imbalance
+- **Generalization:** 13.9% overfitting gap, controlled through L1/L2 regularization
+- **Cross-Validation Stability:** Low standard deviation (0.020) across 5-fold CV
 
+### Business Value Metrics
+- **74.2%** overall classification accuracy
+- **0.913** AUC score indicating excellent discrimination
+- **85%** reduction in manual appraisal time
+- **60%** of correct predictions achieved in top 40% confident classifications
 
+---
 
+## 🚀 Technologies Used
 
+- **Python 3.8+**
+- **Data Processing:** Pandas, NumPy
+- **Visualization:** Matplotlib, Seaborn
+- **Machine Learning:** Scikit-learn, XGBoost
+- **Statistical Analysis:** SciPy
+- **Development:** Jupyter Notebook, Google Colab
 
-🏆 Top Predictive Features
+---
 
-RankFeatureImportanceImpact1high\_mileage14%Critical usage threshold2vehicle\_age12%Primary depreciation driver3age\_category10%Non-linear aging effects4very\_high\_mileage8%Extreme wear indicator5is\_vintage6%Collectible premium
+## 📁 Project Structure
 
+vehicle-price-classification/
+├── README.md                           # Project documentation
+├── vehicle_price_classification.ipynb  # Main analysis notebook
+├── eda_analysis.ipynb                  # Exploratory data analysis notebook
+├── data/
+│   └── Vehicles.csv                    # Processed dataset
+├── report/
+│   └── Final_Report.pdf                # Detailed project report
+├── results/
+│   ├── performance/
+│   │   ├── main_dashboard.png
+│   │   └── confusion_matrices_comparison.png
+│   ├── eda/
+│   │   ├── price_distribution.png
+│   │   ├── price_vs_year.png
+│   │   ├── price_vs_mileage.png
+│   │   ├── price_by_condition.png
+│   │   ├── correlation_heatmap.png
+│   │   ├── top_manufacturers.png
+│   │   ├── condition_distribution.png
+│   │   ├── fuel_type_distribution.png
+│   │   ├── top_states.png
+│   │   └── year_distribution.png
+│   └── classification_results_summary.csv
+└── requirements.txt                    # Python dependencies
 
+---
 
-💼 Business Applications
+## ⚙️ Installation & Usage
 
+### Prerequisites
+```bash
+Python 3.8 or higher
 
+Setup
 
-Dealerships: Automated inventory pricing and acquisition decisions
+Clone the repository
 
-Marketplaces: Enhanced search filtering and fraud detection
-
-Financial Institutions: Loan underwriting and risk assessment
-
-Consumers: Transparent pricing guidance and negotiation support
-
-
-
-
-
-⚙️ Quick Start
-
-bash# Clone repository
-
-git clone https://github.com/YOUR\_USERNAME/vehicle-price-classification.git
-
+bashgit clone https://github.com/Abhijit1407/vehicle-price-classification.git
 cd vehicle-price-classification
 
+Install dependencies
+
+bashpip install -r requirements.txt
+
+Download the dataset
 
 
-\# Install dependencies
-
-pip install -r requirements.txt
-
+Original: Kaggle Dataset
+Place processed data in data/ folder
 
 
-\# Run analysis
+Run the notebooks
 
-jupyter notebook vehicle\_price\_classification.ipynb
+bash# For exploratory data analysis
+jupyter notebook eda_analysis.ipynb
 
+# For model training and evaluation
+jupyter notebook vehicle_price_classification.ipynb
 
+💡 Future Improvements
 
-🛠️ Tech Stack
+Address Class Imbalance
 
-Core: Python 3.8+ • Pandas • NumPy • Scikit-learn • XGBoost
-
-Visualization: Matplotlib • Seaborn
-
-Development: Jupyter • Google Colab
-
-
-
-👥 Team \& Acknowledgments
-
-ALY 6040 Data Mining Applications - Group 1
-
-Muskan Bhatt • Aliena Iqbal Hussain Abidi • Abhijit More • Parth Kothari • Shubh Dave
-
-Institution: Northeastern University | Instructor: Prof. Kasun S. | Date: June 2025
+Implement SMOTE for Luxury category
+Cost-sensitive learning approaches
+Hierarchical classification for high-end vehicles
 
 
+Enhanced Features
 
-📄 Documentation
+Geographic market conditions and regional pricing
+Seasonal demand patterns and market cycles
+Economic indicators integration (unemployment, GDP)
+Sentiment analysis from vehicle descriptions
 
-📑 Full Technical Report • 📊 EDA Notebook • 🤖 Model Training
 
+Production Deployment
+
+REST API development for real-time inference
+Model monitoring and drift detection
+A/B testing framework for continuous improvement
+Integration with dealership management systems
+
+
+Advanced Modeling
+
+Deep learning approaches (neural networks)
+Ensemble methods combining multiple algorithms
+Time-series forecasting for price trends
+Natural language processing on vehicle descriptions
+
+
+
+
+👥 Team
+Group 1 - ALY 6040 Data Mining Applications
+
+Muskan Bhatt
+Aliena Iqbal Hussain Abidi
+Abhijit More
+Parth Kothari
+Shubh Dave
+
+Institution: Northeastern University, College of Professional Studies
+Course: ALY 6040 - Data Mining Applications
+Instructor: Prof. Kasun S.
+Date: June 2025
+
+📄 License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+🙏 Acknowledgments
+
+Dataset provided by Austin Reese via Kaggle
+Northeastern University for academic support
+Prof. Kasun S. for guidance throughout the project
+Craigslist for providing the platform that generated this valuable dataset
 
 
 📧 Contact
+Abhijit More
+Master's in Analytics, Northeastern University
+Show Image
+Show Image
 
-Abhijit More • Master's in Analytics, Northeastern University
+📚 Additional Resources
 
-Show Image Show Image
-
+Full Report: Detailed Analysis & Methodology
+EDA Notebook: Exploratory Data Analysis
+Model Notebook: Classification & Evaluation
+Original Dataset: Kaggle - Craigslist Cars & Trucks
 
 
 <div align="center">
-
 ⭐ Star this repo if you find it helpful!
-
 Transforming vehicle pricing through data science and machine learning
-
 </div>
-
+```
